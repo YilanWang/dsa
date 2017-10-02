@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alan-wang/CLionProjects/mystack/STACK.h
+vector.cpp
+/home/alan-wang/CLionProjects/mystack/vector.cpp
+
+/home/alan-wang/CLionProjects/mystack/main.cpp
+iostream
+-
+STACK.h
+/home/alan-wang/CLionProjects/mystack/STACK.h
+use.h
+/home/alan-wang/CLionProjects/mystack/use.h
+sys/types.h
+-
+
+/home/alan-wang/CLionProjects/mystack/stackuse.cpp
+
+/home/alan-wang/CLionProjects/mystack/use.h
+cctype
+-
+cstring
+-
+cstdio
+-
+malloc.h
+-
+cstdlib
+-
+cmath
+-
+STACK.h
+/home/alan-wang/CLionProjects/mystack/STACK.h
+
+/home/alan-wang/CLionProjects/mystack/vector.cpp
+
