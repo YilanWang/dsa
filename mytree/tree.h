@@ -47,7 +47,7 @@ struct BinNode {
     BinNodePos(T)succ();
 
     template<typename VST>
-    void traLevel(VST &); //子树层次遍历
+    void travLevel(VST &); //子树层次遍历
     template<typename VST>
     void travPre(VST &);  //先序遍历
     template<typename VST>
@@ -64,10 +64,10 @@ struct BinNode {
 #define IsLChild(x) (!IsRoot(x) && (&(x)==(x).parent->lc))
 #define IsRChild(x) (!IsRoot(x) && (&(x)==(x).parent->rc))
 #define HasParent(x) (!IsRoot(x))
-#define HsaLChild(x) ((x).lc)
+#define HasLChild(x) ((x).lc)
 #define HasRChild(x) ((x).rc)
-#define HasChild(x) (HasLChild(x) || HasRchild(x))
-#define HasBothChild(x) (HasLChild(x) && HasRchild(x))
+#define HasChild(x) (HasLChild(x) || HasRChild(x))
+#define HasBothChild(x) (HasLChild(x) && HasRChild(x))
 #define IsLeaf(x) (!HasChild(x))
 #define sibling(p) (IsLChild(*(p))?(p)->parent->rc:(p)->parent->lc)
 #define uncle(x) (IsLChild(*((x)->parent))?(x)->parent->parent->rc:(x)->parent->parent->lc)
@@ -82,18 +82,25 @@ template <typename T>BinNodePos(T) BinNode<T>::insertAsRC(T const &e) {
     return rc=new BinNode(e,this);
 }
 
-template <typename T>template <typename VST>
-void BinNode<T>::travIn(VST & visit) {
-    switch (rand()%5){
-        case 1:travIn_I1(this,visit);
-            break;
-        case 2:travIn_I2(this,visit);
-            break;
-        case 3:travIn_I3(this,visit);
-            break;
-        case 4:travIn_I4(this,visit);
-            break;
-        default:travIn_R(this,visit);
+template <typename T>BinNodePos(T) BinNode<T>::succ() {
+    BinNodePos(T)s=this;
+    if(rc){
+        s=rc;
+        while (HasLChild(*s))
+            s=s->lc;
+    } else{
+        while (IsRChild(*s))
+            s=s->parent;
+        s=s->parent;
     }
+    return s;
 }
+
+
+
+
+
+
+
+
 #endif //MYTREE_TREE_H
